@@ -82,6 +82,16 @@ class IiifRandomBlock extends BlockBase implements ContainerFactoryPluginInterfa
     }
 
     $config = $this->configFactory->get('iiif_random_block.settings');
+    $title_max_length = max(0, (int) ($config->get('title_max_length') ?? 0));
+    $items = array_map(function (array $item) use ($title_max_length) {
+      $label = (string) ($item['label'] ?? '');
+      $item['full_label'] = $label;
+      if ($title_max_length > 0 && mb_strlen($label) > $title_max_length) {
+        $item['label'] = mb_substr($label, 0, $title_max_length) . '...';
+      }
+      return $item;
+    }, $items);
+
     // Compute aspect ratio string like "1 / 1" for CSS.
     $compute_ratio = function ($mode, $w, $h, $fallback) {
       $ratio = $fallback;

@@ -146,6 +146,13 @@ class SettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('image_size') ?: 800,
       '#field_suffix' => $this->t('px'),
     ];
+    $form['display_settings']['title_max_length'] = [
+      '#type' => 'number',
+      '#title' => $this->t('Item title max length'),
+      '#default_value' => (int) ($config->get('title_max_length') ?? 0),
+      '#min' => 0,
+      '#description' => $this->t('Maximum number of characters shown under each image. If a title exceeds this length, it will be truncated and appended with "...". Set to 0 to disable truncation.'),
+    ];
 
     // IIIF cropping (percent-based, applied to all images).
     $form['display_settings']['crop'] = [
@@ -414,6 +421,7 @@ class SettingsForm extends ConfigFormBase {
       ->set('number_of_images', $form_state->getValue('number_of_images'))
       ->set('carousel_duration', $form_state->getValue('carousel_duration'))
       ->set('image_size', $form_state->getValue('image_size'))
+      ->set('title_max_length', (int) $form_state->getValue('title_max_length'))
       ->set('info_button_enabled', (bool) $form_state->getValue('info_button_enabled'))
       ->set('aspect_ratio_mode', $form_state->getValue('aspect_ratio_mode'))
       ->set('aspect_ratio_custom_width', (int) $form_state->getValue('aspect_ratio_custom_width'))

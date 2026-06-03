@@ -2,6 +2,15 @@
 
 All notable changes to IIIF Random Block will be documented in this file.
 
+## [1.4.1] - 2026-06-03
+
+### Added
+- Display setting for the maximum length of the item title link shown below each image.
+
+### Changed
+- Item titles are now truncated only when they exceed the configured maximum length, with `...` appended.
+- A setting value of `0` disables title truncation.
+
 ## [1.4.0] - 2025-11-25
 
 ### Added

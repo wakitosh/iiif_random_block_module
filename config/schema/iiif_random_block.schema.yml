@@ -18,6 +18,9 @@ iiif_random_block.settings:
     image_size:
       type: integer
       label: 'Image size (max pixels)'
+    title_max_length:
+      type: integer
+      label: 'Item title max length'
     aspect_ratio_mode:
       type: string
       label: 'Aspect ratio mode'

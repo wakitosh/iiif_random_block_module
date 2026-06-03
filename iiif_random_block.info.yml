@@ -3,4 +3,4 @@ type: module
 description: 'Displays a carousel of random IIIF images from a specified list of manifests.'
 package: Media
 core_version_requirement: ^10 || ^11
-version: 1.4.0
+version: 1.4.1

@@ -312,8 +312,8 @@
             {% endif %}
 
             {# The image itself remains a link to the item page #}
-            <a class="iiif-imgwrap" href="{{ item.related_url }}" target="_blank" rel="noopener noreferrer" title="{{ item.label }}">
-              <img src="{{ item.image_url }}" alt="{{ item.label }}" loading="lazy">
+            <a class="iiif-imgwrap" href="{{ item.related_url }}" target="_blank" rel="noopener noreferrer" title="{{ item.full_label|default(item.label) }}">
+              <img src="{{ item.image_url }}" alt="{{ item.full_label|default(item.label) }}" loading="lazy">
             </a>
 
             {% if info_button_enabled %}
